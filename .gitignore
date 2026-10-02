@@ -5,6 +5,9 @@ scan/
 
 # локальный обход hosts-бага для доступа к api.github.com
 .ghfix_proxy.py
+# исходные PNG (сжатые версии лежат в img/) и временные тесты
+img-original/
+.webptest/
 
 # OS / редакторы
 .DS_Store
