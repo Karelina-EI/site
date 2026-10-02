@@ -3,6 +3,9 @@ index.txt
 ai-docs/
 scan/
 
+# локальный обход hosts-бага для доступа к api.github.com
+.ghfix_proxy.py
+
 # OS / редакторы
 .DS_Store
 Thumbs.db
