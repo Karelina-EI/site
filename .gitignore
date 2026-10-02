@@ -1,0 +1,10 @@
+# не для публикации: личные рабочие файлы и служебное
+index.txt
+ai-docs/
+scan/
+
+# OS / редакторы
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

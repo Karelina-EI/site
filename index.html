@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Екатерина Карелина | Педагог изостудии</title>
+    <meta name="description" content="Мой персональный сайт-портфолио. Я — педагог изостудии, занимаюсь художественно-эстетическим воспитанием детей.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F8F7F3;
+            --text-main: #1D1D1B;
+            --text-muted: #6A6863;
+            --accent: #9A3B3B;
+            --border: #DFDDD5;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .serif {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Essential Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-up {
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4vw;
+        }
+
+        /* Header */
+        header {
+            padding: 3vh 4vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(248, 247, 243, 1) 40%, rgba(248, 247, 243, 0));
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .logo span {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--text-main);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 10vh;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6vw;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+        }
+
+        .hero-title i {
+            display: block;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-muted);
+            max-width: 480px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(1.1);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: var(--text-main);
+            color: var(--bg-color);
+            border: 1px solid var(--text-main);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Sections General */
+        .section {
+            padding: 15vh 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-header {
+            margin-bottom: 8vh;
+            max-width: 600px;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: block;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 8vw;
+        }
+
+        .about-text p {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            line-height: 1.5;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .about-text p strong {
+            color: var(--text-main);
+            font-weight: 400;
+        }
+
+        .philosophy-quote {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            line-height: 1.3;
+            color: var(--accent);
+            margin: 4rem 0;
+            padding-left: 2rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-item h4 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .stat-doc-wrapper {
+            width: 140px;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            cursor: zoom-in;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .stat-doc-wrapper:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-doc-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Grid Cards (Portfolio, Thanks) */
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+        
+        .gratitude-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card-img-wrapper {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: var(--border);
+            cursor: zoom-in;
+        }
+
+        .card-img-wrapper.landscape {
+            aspect-ratio: 4/3;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .card-content p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        
+        .gratitude-card {
+            cursor: zoom-in;
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+        }
+        .gratitude-card:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Studio Section */
+        .studio-showcase {
+            position: relative;
+            margin-top: 4rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 4vw;
+        }
+
+        .studio-showcase img {
+            width: 100%;
+            height: auto;
+            max-height: 75vh;
+            object-fit: cover;
+            cursor: zoom-in;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+        }
+
+        .studio-text-block {
+            background: var(--white);
+            padding: 3rem;
+            max-width: 460px;
+            position: relative;
+            margin-top: -60px;
+            margin-left: 5%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            z-index: 2;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 8vh 4vw;
+            background: var(--text-main);
+            color: var(--bg-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid, .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            header {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding-bottom: 1rem;
+                background: var(--bg-color);
+            }
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+            .studio-text-block {
+                margin: 0;
+                max-width: 100%;
+            }
+            .studio-main-img {
+                aspect-ratio: 4/3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="animate-up">
+        <a href="#" class="logo">Карелина <span>Е.И.</span></a>
+        <nav>
+            <a href="#about">Обо мне</a>
+            <a href="#portfolio">Творчество</a>
+            <a href="#cabinet">Студия</a>
+            <a href="#achievements">Признание</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-grid">
+                <div class="hero-text animate-up delay-1">
+                    <span class="section-label">Педагог изостудии</span>
+                    <h1 class="hero-title">Искусство <br><i>воспитывать</i></h1>
+                    <p class="hero-subtitle">Здравствуйте! Я — Екатерина Карелина. Я занимаюсь художественно-эстетическим воспитанием детей, открывая им мир народных традиций и творчества.</p>
+                    <div class="btn-group">
+                        <a href="#portfolio" class="btn">Мои проекты</a>
+                        <a href="#about" class="btn btn-outline">Узнать больше</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper zoom-target animate-up delay-2">
+                    <img src="./img/main.png" alt="Екатерина Карелина">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section container">
+            <div class="about-grid">
+                <div class="about-header">
+                    <span class="section-label">Мой подход</span>
+                    <h2 class="section-title">Соединяя культуру и развитие</h2>
+                </div>
+                <div class="about-text">
+                    <p><strong>Я рассматриваю искусство как важнейшую часть детского развития.</strong> По моему глубокому убеждению, художественный материал должен быть богатым по эмоциональному содержанию и по-настоящему развивающим ребёнка.</p>
+                    <p>В своей работе я стремлюсь подбирать для детей яркий и осмысленный материал: я знакомлю воспитанников с книгами и альбомами по искусству, организую обращение к музейной культуре, выставкам и мастер-классам. Особое место в моей практике занимает <strong>народное искусство</strong>.</p>
+                    
+                    <div class="philosophy-quote serif">
+                        «Через искусство ребёнок учится видеть красоту, чувствовать культуру своего народа и открывать собственный внутренний мир.»
+                    </div>
+
+                    <p>Такое прикосновение к народной культуре, орнаментам Гжели, Хохломы и северных росписей помогает детям почувствовать живую связь с традицией и формирует уважение к истории своей страны.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-doc-wrapper zoom-target">
+                                <img src="./img/document_2.png" alt="Диплом 2006" loading="lazy">
+                            </div>
+                            <h4>2006</h4>
+                            <p>Базовая квалификация «Организатор-методист дошкольного образования».</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-doc-wrapper zoom-target">
+                                <img src="./img/document_1.png" alt="Диплом 2015" loading="lazy">
+                            </div>
+                            <h4>2015</h4>
+                            <p>Профессиональная переподготовка по программе «Изобразительное искусство».</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-doc-wrapper zoom-target">
+                                <img src="./img/document_3.png" alt="Повышение квалификации" loading="lazy">
+                            </div>
+                            <h4>2021</h4>
+                            <p>Повышение квалификации по художественно-эстетическому воспитанию и ИКТ.</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-doc-wrapper zoom-target">
+                                <img src="./img/document_5.png" alt="ФОП ДО 2024" loading="lazy">
+                            </div>
+                            <h4>2024</h4>
+                            <p>Повышение квалификации по внедрению федеральной образовательной программы.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section container">
+            <div class="section-header">
+                <span class="section-label">Творческие события</span>
+                <h2 class="section-title">Практика и вдохновение</h2>
+            </div>
+            
+            <div class="masonry-grid">
+                <article class="card">
+                    <div class="card-img-wrapper landscape zoom-target">
+                        <img src="./img/gallery_1.png" alt="В гостях у Хохломушечки" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>«В гостях у Хохломушечки»</h3>
+                        <p>На этом занятии я знакомлю детей с мотивами хохломской росписи. Мы пробуем декоративные решения и включаемся в работу через игру, примеряя элементы костюма и изучая художественное оформление.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img-wrapper landscape zoom-target">
+                        <img src="./img/gallery_2.png" alt="Подарки матушки Гжели" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>«Подарки матушки Гжели»</h3>
+                        <p>Художественный досуг, посвящённый традициям гжельского промысла. Через цвет, орнамент и игровые формы я помогаю детям освоить образный язык народного декоративного искусства.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="cabinet" class="section">
+            <div class="container section-header">
+                <span class="section-label">Мое рабочее пространство</span>
+                <h2 class="section-title">Среда, которая помогает творить</h2>
+            </div>
+            <div class="studio-showcase">
+                <div class="zoom-target">
+                    <img src="./img/kabinet.png" alt="Мой кабинет изостудии" loading="lazy">
+                </div>
+                <div class="studio-text-block">
+                    <p class="section-label">Атмосфера</p>
+                    <h3 class="serif" style="font-size: 2rem; margin-bottom: 1rem;">Пространство для созидания</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Я оформила кабинет так, чтобы каждая деталь работала на развитие интереса к искусству. Здесь есть выставочные поверхности для детских работ, образцы росписей, коллекция предметов русского быта и удобные зоны для совместного творчества.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="section container">
+            <div class="section-header">
+                <span class="section-label">Признание</span>
+                <h2 class="section-title">Мои благодарности</h2>
+            </div>
+            <div class="gratitude-grid">
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_1.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_2.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_3.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_4.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_5.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_6.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_7.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_8.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_9.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_10.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_11.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_12.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_13.png" alt="Благодарность" loading="lazy"></article>
+                 <article class="gratitude-card zoom-target"><img src="./img/blagodarnost_14.png" alt="Благодарность" loading="lazy"></article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Element -->
+    <div class="lightbox" id="lightbox">
+        <img id="lightbox-img" src="" alt="Детальное изображение">
+    </div>
+
+    <footer>
+        <div class="logo">Карелина <span>Е.И.</span></div>
+        <p>&copy; 2026. Мой персональный сайт-портфолио педагога изостудии.</p>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card, .section-header, .about-text').forEach(el => {
+            el.classList.add('animate-up');
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.zoom-target').forEach(wrapper => {
+            wrapper.addEventListener('click', () => {
+                const img = wrapper.tagName === 'IMG' ? wrapper : wrapper.querySelector('img');
+                if (img) {
+                    lightboxImg.src = img.src;
+                    lightbox.classList.add('active');
+                }
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
